@@ -1,0 +1,28 @@
+﻿@page "/portfolio/{CardId}"
+@using blazorfirststandaloneapplication.shared.Models
+@using blazor_first_standalone_application.Helpers
+@inherits blazorfirststandaloneapplication.Base.CardBase
+@inject IPortfolioCardHelper PortfolioCardHelper
+<div class="row">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col p-0 py-2 mh-25">
+                <div class="card bg-dark text-white rounded-0">
+                    <img class="card-img article-image-header" src="@PortfolioCardHelper.GetPortfolioCardImage(Card)" alt="Card image">
+                    <div class="card-img-overlay d-flex">
+                        <h3 class="card-title align-self-end m-0">@Card.Title</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p>
+                    @Card.Description
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

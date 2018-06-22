@@ -5,12 +5,55 @@
     <meta name="viewport" content="width=device-width">
     <title>blazor-first-standalone-application</title>
     <base href="/" />
+    <link href="css/fontawesome-all.min.css" rel="stylesheet" />
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/site.css" rel="stylesheet" />
 </head>
 <body>
     <app>Loading...</app>
 
-    <script type="blazor-boot"></script>
+    <!-- Temporary polyfill for IE support -->
+    <script src="sample-data/holder.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2018.1.221/js/jquery.min.js"></script>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise,fetch"></script>
+    <script type="blazor-boot">
+    </script>
+
+    <script>
+        //Create javascript function and use it in .NET (show connection beetwen JS and C# - two way data binding)
+        Blazor.registerFunction('loadDataAboutUsers', (data) => {
+            try {
+                console.info("Hello world! Actually that was sent from javascript");
+                console.dir("\nData was sent from Blazor C# base page: " + data.exampleProperty);
+            }
+            catch (error) {
+                return false;
+            }
+
+            return true;
+        })
+    </script>
+    <script>
+        //On click specified button execute .NET method
+        function executeButton(text) {
+            console.info("ExecuteButton from javascript has been started.");
+
+            var assemblyName = 'blazor-first-standalone-application';
+            var namespace = 'blazorfirststandaloneapplication.Base';
+            var typeName = 'InteropBase';
+            var methodName = 'ExampleDotNetMethod';
+
+            var foundMethod = window.Blazor.platform.findMethod(
+                assemblyName,
+                namespace,
+                typeName,
+                methodName
+            );
+
+            var result = window.Blazor.platform.callMethod(foundMethod, null, [window.Blazor.platform.toDotNetString(text)]);
+
+
+        }
+    </script>
 </body>
 </html>

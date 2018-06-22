@@ -1,0 +1,43 @@
+﻿@page "/interop"
+@inherits blazorfirststandaloneapplication.Base.InteropBase
+
+<div class="row">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2 class="pb-2 my-3 border-bottom">Javascript interop</h2>
+                <blockquote class="">
+                    <div class="p-2 mb-0 pb-0 bg-light">
+                        <p>Running .NET code inside web browsers is made possible by a relatively new technology, <a href="http://webassembly.org">WebAssembly</a> (abbreviated <em>wasm</em>). WebAssembly is an open web standard and is supported in web browsers without plugins. WebAssembly is a compact bytecode format optimized for fast download and maximum execution speed.</p>
+                        <p>WebAssembly code can access the full functionality of the browser via JavaScript interop. At the same time, WebAssembly code runs in the same trusted sandbox as JavaScript to prevent malicious actions on the client machine.</p>
+                        <p>When a Blazor app is built and run in a browser:</p>
+                        <ol>
+                            <li>C# code files and Razor files are compiled into .NET assemblies.</li>
+                            <li>The assemblies and the .NET runtime are downloaded to the browser.</li>
+                            <li>Blazor uses JavaScript to bootstrap the .NET runtime and configures the runtime to load required assembly references. Document object model (DOM) manipulation and browser API calls are handled by the Blazor runtime via JavaScript interoperability.</li>
+                        </ol>
+                        <p class="mb-0">To support older browsers that don't support WebAssembly, Blazor falls back to using an <a href="https://wikipedia.org/wiki/Asm.js">asm.js</a>-based .NET runtime.</p>
+                    </div>
+                    <footer class="blockquote-footer">More informations in <cite title="Blazor.net"><a href="https://blazor.net/docs/introduction/index.html">Blazor .NET</a></cite></footer>
+                </blockquote>
+                <p class="lead">We can call js functions in C# and call .Net methods from javascript code!</p>
+                <p class="alert alert-primary">>> <a href="https://learn-blazor.com/getting-started/" class="alert-link">Great page with most interesting tutorial for Blazor.</a></p>
+                <div class="card" style="width: 100%">
+                    <div class="card-body">
+                        <div class="card-title">Remember to open developer tools in browser on console tab before click the button to find a trace.</div>
+                        <div class="card-text">
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-block btn-primary" onclick="@CallLoadDataAboutUsers()">click to call js method from .NET</button>
+                                </div>
+                                <div class="col d-flex">
+                                    <button id="buttonNetExecute" class="btn btn-block btn-primary" onclick="executeButton('Hello world! :)')">Execute .NET method from javascript</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

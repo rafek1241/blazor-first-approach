@@ -1,0 +1,49 @@
+﻿@page "/portfolio"
+@using blazorfirststandaloneapplication.shared.Models
+@inherits blazorfirststandaloneapplication.Base.PortfolioBase
+
+<div class="row pt-3">
+    <div class="container">
+        <div class="row">
+            <div class="card-columns">
+                @foreach (var card in PortfolioCards)
+                {
+                    <div class="@PortfolioCardHelper.GetCardStyles(card)">
+                        @if (card.Type == PortfolioCardType.Image)
+                        {
+                            <img class="card-img" src="@PortfolioCardHelper.GetPortfolioCardImage(card)" alt="@card.Image?.Filename">
+                        }
+                        else if (card.Type == PortfolioCardType.Quote)
+                        {
+                            <blockquote class="blockquote mb-0 card-body">
+                                <p class="card-title">@card.Title</p>
+                                <footer class="blockquote-footer">
+                                    <small>
+                                        Added @card.CreatedAt.ToShortDateString() by
+                                        <cite title="Source Title">@card.Author.Name @card.Author.Surname</cite>
+                                    </small>
+                                </footer>
+                            </blockquote>
+                            <a class="card-link" href="portfolio/@card.PortfolioCardId ">Go to Quote (normal link)</a>
+                        }
+                        else
+                        {
+                            <img class="card-img-top" src="@PortfolioCardHelper.GetPortfolioCardImage(card)" alt="@card.Image?.Filename">
+                            <div class="card-body">
+                                <h5 class="card-title">@card.Title</h5>
+                                <p class="card-text">@card.Description.Substring(0, 150)</p>
+                                <p class="card-text">
+                                    <small class="text-muted">
+                                        Added @card.CreatedAt.ToShortDateString() by
+                                        <cite title="Source Title">@card.Author.Name @card.Author.Surname</cite>
+                                    </small>
+                                </p>
+                                <a class="card-link" href="javascript:void(0)" onclick="@NavigateToCard(card.PortfolioCardId)">Go to @card.Type.ToString() (through backend)</a>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
