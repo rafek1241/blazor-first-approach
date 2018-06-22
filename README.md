@@ -6,7 +6,9 @@ Repository prepared for my presentation on technical-corner meeting in my workpl
 # What is blazor?
 
 http://blazor.net
+
 http://learn-blazor.net
+
 https://github.com/aspnet/Blazor
 
-That's all you need. This repository as well as my presentation was done thanks to that resources.
+That's all you need. This repository as well as my presentation have been made thanks to these resources.
