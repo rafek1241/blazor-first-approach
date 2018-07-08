@@ -1,0 +1,70 @@
+﻿@page "/two-way"
+
+<div class="container pt-3">
+    <p class="lead">
+        More information at: <a href="https://learn-blazor.com/pages/data-binding/">https://learn-blazor.com/pages/data-binding/</a>
+    </p>
+    <div class="row">
+        <div class="col">
+            <p class="h2">Live two way data binding example:</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <b>Model</b>
+            <p>Title: @Title</p>
+            <p>Description: @Description</p>
+            <p>CreatedBy: @CreatedBy</p>
+        </div>
+        <div class="col">
+            <b>Form to update existing model</b>
+            <div class="form-group">
+                <label class="control-label">Title</label>
+                <input type="text" bind="@Title" class="form-control" placeholder="Enter title of movie" />
+                <small>After typing try to unfocus the input to view changes on left column</small>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Description</label>
+                <input type="text" bind="@Description" class="form-control" placeholder="Enter description of movie" />
+                <small>After typing try to unfocus the input to view changes on left column</small>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Created By</label>
+                <input type="text" bind="@CreatedBy" class="form-control" placeholder="Enter director name of movie" />
+                <small>After typing try to unfocus the input to view changes on left column</small>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <p class="h2">One way data binding example:</p>
+    </div>
+    <div class="row">
+        <p>Fill form above and click this button (developer tools console will be filled)</p>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-primary" onclick="@ShowModel()">Click me</button>
+        </div>
+    </div>
+</div>
+
+@functions
+{
+private string Title { get; set; } = "";
+private string Description { get; set; } = "";
+private string CreatedBy { get; set; } = "";
+private string Result { get; set; } = "";
+
+
+
+Action ShowModel()
+{
+    return () =>
+    {
+        Console.WriteLine("Before = " + Result);
+        Result = $"{Title} {Description} {CreatedBy}";
+        Console.WriteLine("After = " + Result);
+    }
+    ;
+}
+}

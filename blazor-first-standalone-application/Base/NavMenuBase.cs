@@ -37,13 +37,13 @@ namespace blazorfirststandaloneapplication.Base
                         Route = "/portfolio",
                         Order = 2
                     },
-                //    new MenuLink()
-                //    {
-                //        IconName = "fas fa-shopping-cart",
-                //        Label = "E-commerce example",
-                //        Route = "/e-commerce",
-                //        Order = 3
-                //    },
+                    new MenuLink()
+                    {
+                        IconName = "fas fa-sync-alt",
+                        Label = "Data binding example",
+                        Route = "/two-way",
+                        Order = 3
+                    },
                 //    new MenuLink()
                 //    {
                 //        IconName = "fas fa-address-card",

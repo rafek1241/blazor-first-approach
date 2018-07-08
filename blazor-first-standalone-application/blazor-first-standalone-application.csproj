@@ -80,6 +80,7 @@
     <None Include="Pages\Contact.cshtml" />
     <None Include="Pages\ECommerce.cshtml" />
     <None Include="Pages\Portfolio.cshtml" />
+    <None Include="Pages\TwoWay.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -128,6 +129,14 @@
 
   <ItemGroup>
     <BlazorGenerate Remove="Pages\Interop.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <BlazorGenerate Remove="Pages\TwoWay.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\TwoWay.cshtml" />
   </ItemGroup>
 
 </Project>

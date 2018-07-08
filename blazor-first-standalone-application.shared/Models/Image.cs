@@ -16,6 +16,6 @@ namespace blazorfirststandaloneapplication.shared.Models
 
         public virtual PortfolioCard PortfolioCard { get; set; }
 
-        public string MimeType => string.IsNullOrEmpty(Filename) ? MimeTypes.GetMimeType(Filename) : null;
+        public string MimeType => string.IsNullOrEmpty(Filename) ? "jpg" : null; //TODO: repair, because MimeTypes nuget can't be used
     }
 }
